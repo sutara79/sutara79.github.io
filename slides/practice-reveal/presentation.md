@@ -11,7 +11,7 @@ CDNを使えば、わざわざダウンロードして設置する必要はあ�
 
 ## 2. マークダウンで記述する
 文書の中身はマークダウンで記述します。  
-さらに外部ファイルにすれば便利です。
+外部ファイルにすれば、さらに便利です。
 
 ###### index.html
 ```html
@@ -61,3 +61,4 @@ CDNを使えば、わざわざダウンロードして設置する必要はあ�
 - <ruby>宮崎<rt>みやざき</rt></ruby> <ruby>雄策<rt>ゆうさく</rt></ruby>
 - Mail:[toumin.m7@gmail.com](mailto:toumin.m7@gmail.com)
 - Twitter:[@sutara_lumpur](//twitter.com/sutara_lumpur)
+- Blog:[はてなブログ](http://sutara79.hatenablog.com/entry/2015/08/08/145608)

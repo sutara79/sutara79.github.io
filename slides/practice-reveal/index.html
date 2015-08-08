@@ -51,16 +51,35 @@
         center: true,
         transition: 'slide',
         dependencies: [
-          { src: '//cdnjs.cloudflare.com/ajax/libs/reveal.js/3.1.0/lib/js/classList.min.js', condition: function() { return !document.body.classList; } },
-          { src: '//cdnjs.cloudflare.com/ajax/libs/reveal.js/3.1.0/plugin/markdown/marked.min.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: '//cdnjs.cloudflare.com/ajax/libs/reveal.js/3.1.0/plugin/markdown/markdown.min.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          {
+            src: '//cdnjs.cloudflare.com/ajax/libs/reveal.js/3.1.0/lib/js/classList.min.js',
+            condition: function() { return !document.body.classList; }
+          },
+          {
+            src: '//cdnjs.cloudflare.com/ajax/libs/reveal.js/3.1.0/plugin/markdown/marked.min.js',
+            condition: function() { return !!document.querySelector( '[data-markdown]' ); }
+          },
+          {
+            src: '//cdnjs.cloudflare.com/ajax/libs/reveal.js/3.1.0/plugin/markdown/markdown.min.js',
+            condition: function() { return !!document.querySelector( '[data-markdown]' ); }
+          },
 
           // NOTE: removed "condition: function() { return !!document.querySelector( 'pre code' ); }"
           // cf. https://github.com/hakimel/reveal.js/issues/1225
-          { src: '//cdnjs.cloudflare.com/ajax/libs/reveal.js/3.1.0/plugin/highlight/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          {
+            src: '//cdnjs.cloudflare.com/ajax/libs/reveal.js/3.1.0/plugin/highlight/highlight.min.js',
+            async: true,
+            callback: function() { hljs.initHighlightingOnLoad(); }
+          },
 
-          { src: '//cdnjs.cloudflare.com/ajax/libs/reveal.js/3.1.0/plugin/zoom-js/zoom.min.js', async: true },
-          { src: '//cdnjs.cloudflare.com/ajax/libs/reveal.js/3.1.0/plugin/notes/notes.min.js', async: true }
+          {
+            src: '//cdnjs.cloudflare.com/ajax/libs/reveal.js/3.1.0/plugin/zoom-js/zoom.min.js',
+            async: true
+          },
+          {
+            src: '//cdnjs.cloudflare.com/ajax/libs/reveal.js/3.1.0/plugin/notes/notes.min.js',
+            async: true
+          }
         ]
       });
     </script>
