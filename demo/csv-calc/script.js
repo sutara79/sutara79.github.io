@@ -1,5 +1,8 @@
-jQuery(document).ready(function($) {
-  $.get('products.csv', function(data) {
+/**
+ * CSVを元に注文表を作成する
+ */
+function csvCalc(file, selector, id_num) {
+  $.get(file, function(data) {
     /**
      * CSVを配列に
      */
@@ -11,37 +14,43 @@ jQuery(document).ready(function($) {
     data.pop();
 
     /**
-     * テーブルで表示
+     * HTML内で整形して表示
      */
-    var elem = '<table id="products">';
-    elem += '<tr class="th"><th>id</th><th>name</th><th>price</th><th>amount</th><th>sum</th></tr>';
-    for (var i = 0; i < data.length; i++) {
-      elem += '<tr class="product-info">';
-      elem += '<td>' + data[i][0] + '</td>';
-      elem += '<td>' + data[i][1] + '</td>';
-      elem += '<td class="price">' + data[i][2] + '</td>';
-      elem += '<td><input class="amount" type="number" min="0" value="0"></td>';
-      elem += '<td class="sum">0</td>';
-      elem += '</tr>';
+    var original = $(selector).find('[data-csvcalc-repeat]');
+    for (var m = 0; m < data.length; m++) {
+      var clone = $(original).clone();
+      $(original).before(clone);
+
+      // 値を挿入
+      for (var n = 0; n < data[m].length; n++) {
+        $(clone).find('[data-csvcalc-text="' + n + '"]').text(data[m][n]);
+      }
+
+      // id, priceの値を保存
+      // ! 挿入した値の修飾はこの処理の後で行うこと。
+      var elem_id = $(clone).find('[data-csvcalc-id]');
+      $(elem_id).attr('data-csvcalc-id', $(elem_id).text());
+      var elem_price = $(clone).find('[data-csvcalc-price]');
+      $(elem_price).attr('data-csvcalc-price', $(elem_price).text());
+
+      // name属性を作成
+      $(clone).find('[data-csvcalc-input]').attr('name', data[m][id_num]);
     }
-    elem += '<tr class="th"><th colspan="4" class="th-total">total</th><td class="total">0</td></tr>'
-    elem += '</table>';
-    $('#result').append(elem);
+    $(original).remove();
   });
 
   /**
    * 金額を計算
    */
-  $(document).on('change', '#products .amount', function(ev) {
+  $(document).on('change', selector + ' [data-csvcalc-input]', function(ev) {
     var amount = $(ev.target).val();
 
     // バリデーション
     // 入力値は数値か?
-    amount = parseInt(
+    amount = Number(
       amount.replace(/[０-９]/g, function(s) {
         return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
-      }),
-      10
+      })
     );
     if (isNaN(amount)) { // 数字以外は強制的にゼロとする。
       $(ev.target).val(0);
@@ -50,15 +59,20 @@ jQuery(document).ready(function($) {
     $(ev.target).val(amount); // 画面上の全角数字は、ここで半角となる。
 
     // 合計を算出・表示
-    var tr = $(ev.target).parents('tr');
-    var price = $(tr).children('.price').text();
-    $(tr).children('.sum').text(amount * price);
+    var parent = $(ev.target).parents('[data-csvcalc-repeat]');
+    var price = $(parent).find('[data-csvcalc-price]').text();
+    $(parent).find('[data-csvcalc-sum]')
+      .text(amount * price)
+      .attr('data-csvcalc-sum', amount * price);
 
     // 総計を算出・表示
     var total = 0;
-    $('#products .sum').each(function(idx, elem) {
-      total += parseInt($(elem).text(), 10);
+    $(selector + ' [data-csvcalc-sum]').each(function(idx, elem) {
+      var sum = Number($(elem).attr('data-csvcalc-sum'));
+      if (!isNaN(sum)) total += sum;
     });
-    $('#products .total').text(total);
+    $(selector + ' [data-csvcalc-total]')
+      .text(total)
+      .attr('data-csvcalc-total', total);
   });
-});
+}
