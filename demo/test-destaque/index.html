@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<!-- プラグインにとって必須ではないが、画面表示を整えるためのCSS -->
+<link rel="stylesheet" href="css/style.css">
+
+<!-- jQueryライブラリ -->
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- 画像のなめらかな動きのために必要なプラグイン -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+<!-- スライドショーのプラグイン -->
+<script src="js/jquery.destaque.js"></script>
+<script src="js/jquery.destaque.queue.js"></script>
+
+<!-- スライドショーを適用 -->
+<script>
+$(function() {
+  $('#slide-container').destaque({
+    slideSpeed: 1000,
+    elementSpeed: 1100,
+    autoSlideDelay: 1000,
+    itemSelector: '.item',
+    itemBackgroundSelector: '.background img',
+    itemForegroundElementSelector: '.foreground .element',
+    controlsSelector: '.pager'
+  });
+});
+</script>
+</head>
+<body>
+<section id="hero">
+  <div id="slide-container">
+    <div class="item">
+      <div class="background"><img src="img/001.png"></div>
+      <div class="foreground">
+        <h2 class="element">タイトル1</h2>
+        <p class="element">
+          itemForegroundElementSelectorを<br>
+          ".foreground"ではなく".foreground .element"と指定することで、
+        </p>
+      </div>
+    </div>
+    <div class="item">
+        <div class="background"><img src="img/002.png"></div>
+        <div class="foreground">
+          <h2 class="element">タイトル2</h2>
+          <p class="element">
+            タイトルと本文が<br>
+            別々に動くようになります。
+          </p>
+        </div>
+    </div>
+    <div class="item">
+      <div class="background"><img src="img/003.png"></div>
+      <div class="foreground">
+        <h2 class="element">タイトル3</h2>
+        <p class="element">
+          itemForegroundElementSelectorを<br>
+          ".foreground"ではなく".foreground .element"と指定することで、
+        </p>
+      </div>
+    </div>
+    <div class="item">
+      <div class="background"><img src="img/004.png"></div>
+      <div class="foreground">
+        <h2 class="element">タイトル4</h2>
+          <p class="element">
+            タイトルと本文が<br>
+            別々に動くようになります。
+          </p>
+      </div>
+    </div>
+  </div>
+  <div class="controller">
+    <a href="#" class="pager" rel="prev">Prev</a>
+    <a href="#" class="pager" rel="next">Next</a>
+  </div>
+</section>
+</body>
+</html>
