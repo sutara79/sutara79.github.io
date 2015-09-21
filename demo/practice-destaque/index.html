@@ -2,8 +2,9 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<title>How to use jquery.destaque</title>
 <!-- プラグインにとって必須ではないが、画面表示を整えるためのCSS -->
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="style.css">
 
 <!-- jQueryライブラリ -->
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -12,13 +13,13 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
 <!-- スライドショーのプラグイン -->
-<script src="js/jquery.destaque.js"></script>
-<script src="js/jquery.destaque.queue.js"></script>
+<script src="//rawgit.com/globocom/destaque/master/src/jquery.destaque.js"></script>
+<script src="//rawgit.com/globocom/destaque/master/src/jquery.destaque.queue.js"></script>
 
 <!-- スライドショーを適用 -->
 <script>
 $(function() {
-  $('#slide-container').destaque({
+  $('.slide-container').destaque({
     slideSpeed: 1000,
     elementSpeed: 1100,
     autoSlideDelay: 1000,
@@ -31,10 +32,11 @@ $(function() {
 </script>
 </head>
 <body>
-<section id="hero">
-  <div id="slide-container">
+<h1>How to use jquery.destaque</h1>
+<section class="hero">
+  <div class="slide-container">
     <div class="item">
-      <div class="background"><img src="img/001.png"></div>
+      <div class="background"><img src="img/001.png" alt=""></div>
       <div class="foreground">
         <h2 class="element">タイトル1</h2>
         <p class="element">
@@ -44,7 +46,7 @@ $(function() {
       </div>
     </div>
     <div class="item">
-        <div class="background"><img src="img/002.png"></div>
+        <div class="background"><img src="img/002.png" alt=""></div>
         <div class="foreground">
           <h2 class="element">タイトル2</h2>
           <p class="element">
@@ -54,7 +56,7 @@ $(function() {
         </div>
     </div>
     <div class="item">
-      <div class="background"><img src="img/003.png"></div>
+      <div class="background"><img src="img/003.png" alt=""></div>
       <div class="foreground">
         <h2 class="element">タイトル3</h2>
         <p class="element">
@@ -64,7 +66,7 @@ $(function() {
       </div>
     </div>
     <div class="item">
-      <div class="background"><img src="img/004.png"></div>
+      <div class="background"><img src="img/004.png" alt=""></div>
       <div class="foreground">
         <h2 class="element">タイトル4</h2>
           <p class="element">
