@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.parallax-wrap {
+  /* necessary for parallax */
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+
+  /* others */
+  height: calc(100% - 128px);
+  min-height: 640px;
+  padding: 64px 20px;
+}
+.parallax-wrap > div:nth-child(1) {
+  background-image: url(//f.st-hatena.com/images/fotolife/s/sutara_lumpur/20150629/20150629131634.jpg);
+}
+.parallax-wrap > div:nth-child(2) {
+  background-image: url(//f.st-hatena.com/images/fotolife/s/sutara_lumpur/20150629/20150629131635.jpg);
+}
+.parallax-wrap > div:nth-child(3) {
+  background-image: url(//f.st-hatena.com/images/fotolife/s/sutara_lumpur/20150629/20150629131636.jpg);
+}
+.parallax-wrap > div > p {
+  background: rgb(255, 255, 255); /* The Fallback */
+  background: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+}

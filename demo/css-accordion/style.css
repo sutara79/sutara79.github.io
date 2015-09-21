@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+nav {
+  position: relative;
+}
+.nav-btn {
+  display: none;
+}
+.nav-btn-label {
+  background: #eee;
+  border: 1px solid #999;
+  border-radius: 4px;
+  color: #333;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1;
+  padding: 8px;
+}
+nav > ul {
+  background: #eee;
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+}
+.nav-btn:checked + ul {
+  height: 100px;
+}
