@@ -1,16 +1,16 @@
 <?php
-$dir_path = 'C:\xampp\htdocs';
+$root = 'C:\xampp\htdocs';
 $exclude = '.git,.gitignore,.htaccess,.AppleDouble';
 $filter = '*.html,*.shtml,*.css,*.js';
 $result = '';
 
-if (isset($_POST['dir_path'])) {
-  $dir_path = $_POST['dir_path'];
+if (isset($_POST['root'])) {
+  $root = $_POST['root'];
   $exclude = $_POST['exclude'];
   $filter = $_POST['filter'];
 
   $result = getWheres(
-    $dir_path,
+    $root,
     $exclude,
     $filter
   );
@@ -25,34 +25,26 @@ if (isset($_POST['dir_path'])) {
  * @param string $filter='' その他の抽出条件
  */
 function getWheres($path, $exclude, $filter) {
-  $exclude = explode(',', $exclude);
-  foreach ($exclude as $key => $val) {
-    $exclude[$key] = str_replace('"', '', trim($val));
+  $arr_exclude = explode(',', $exclude);
+  foreach ($arr_exclude as $key => $val) {
+    $arr_exclude[$key] = str_replace('"', '', trim($val));
   }
 
   // ディレクトリを開く
   $handle = opendir($path);
   if (!$handle) {
-    return 'ファイルを開けませんでした';
+    return 'File could not open.';
   }
-
-  // 出力ファイルを用意する
-  $filename_result = 'getwheres-result.txt';
-  if (!file_exists($filename_result)) { touch($filename_result); }
 
   // 出力内容を格納する変数を用意
   $wheres = '';
-  $log = '';
-  $exclude = array_merge($exclude, array(
-    basename($_SERVER['PHP_SELF']),
-    $filename_result
-  ));
+  $arrange = '';
 
   // ディレクトリ内の一覧を取得 (現在の階層のみ)
   $files = array();
   $dirs = array();
   while (false !== ($entry = readdir($handle))) {
-    if ($entry == "." || $entry == ".." || array_search($entry, $exclude) !== false ) { continue; }
+    if ($entry == "." || $entry == ".." || array_search($entry, $arr_exclude) !== false ) { continue; }
     if (is_file("$path\\$entry")) {
       $files[] = $entry;
     } else {
@@ -67,29 +59,29 @@ function getWheres($path, $exclude, $filter) {
 
   foreach ($dirs as $item) {
     $wheres .= "$path\\$item,";
-    $log .= "$path\\$item,\n";
+    $arrange .= "$path\\$item,\n";
   }
   closedir($handle);
 
-  // 結果を整形する
-  $result = <<<END
+  // 結果を返す
+  return <<< EOF
 ## Wheres
-$wheres
+$wheres$filter
 
 - - - - - - - -
+## Arrange
+$arrange$filter
+
+- - - - - - - -
+## Root
+$path
+
 ## Exclude
 $exclude
 
 ## Filter
 $filter
-
-## List
-$log
-END;
-
-  // 結果を出力する
-  file_put_contents($filename_result, $result . $log);
-  return $result . $log;
+EOF;
 }
 ?>
 <!DOCTYPE html>
@@ -99,44 +91,78 @@ END;
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SublimeText3のファイル横断検索用にWheresを生成</title>
 <style>
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  article {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+  }
   textarea {
+    margin: 0;
+    padding-left: 4px;
+    padding-right: 4px;
+/*    border-width: 1px;
+    border-color: #aaa;*/
+    border: 1px solid #aaa;
     margin-top: 2em;
-    width: 900px;
-    height: 400px;
+    width: calc(100% - 10px);
+    min-height: 400px;
   }
   input[type="text"],
   textarea {
     font-size: 16px;
     font-family: Consolas, Meiryo, monospace;
   }
+  ul {
+    padding: 0;
+  }
+  li {
+    display: table;
+    width: 100%;
+  }
   label {
-    display: inline-block;
+    display: table-cell;
     width: 80px;
   }
+  .wrap-input {
+    display: table-cell;
+  }
   input[type="text"] {
-    width: 720px;
+    width: calc(100% - 10px);
+    padding-left: 4px;
+    padding-right: 4px;
+    border: 1px solid #aaa;
   }
 </style>
 </head>
 <body>
-<h1>SublimeText3のファイル横断検索用にWheresを生成</h1>
-<form action="" method="post">
-  <ul>
-    <li>
-      <label for="dir_path">Root</label>
-      <input type="text" name="dir_path" value="<?php echo $dir_path; ?>">
-    </li>
-    <li>
-      <label for="exclude">Exclude</label>
-      <input type="text" name="exclude" value="<?php echo $exclude; ?>">
-    </li>
-    <li>
-      <label for="filter">Filter</label>
-      <input type="text" name="filter" value="<?php echo $filter; ?>">
-    </li>
-  </ul>
-  <button type="submit">Send</button>
-</form>
-<textarea><?php echo $result; ?></textarea>
+<article>
+  <h1>SublimeText3のファイル横断検索用にWheresを生成</h1>
+  <p>
+    ファイル横断検索に指定したいフォルダの中に除外したいフォルダがある場合に使うツールです。<br>
+    ExcludeとFilterはカンマ区切りで指定してください。
+  </p>
+  <form action="" method="post">
+    <ul>
+      <li>
+        <label for="root">Root</label>
+        <div class="wrap-input"><input type="text" id="root" name="root" value="<?php echo $root; ?>"></div>
+      </li>
+      <li>
+        <label for="exclude">Exclude</label>
+        <div class="wrap-input"><input type="text" id="exclude" name="exclude" value="<?php echo $exclude; ?>"></div>
+      </li>
+      <li>
+        <label for="filter">Filter</label>
+        <div class="wrap-input"><input type="text" id="filter" name="filter" value="<?php echo $filter; ?>"></div>
+      </li>
+    </ul>
+    <button type="submit">Send</button>
+  </form>
+  <textarea><?php echo $result; ?></textarea>
+</article>
 </body>
 </html>
