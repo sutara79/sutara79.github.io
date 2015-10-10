@@ -1,0 +1,39 @@
+## Wheres
+c:\website\local.souzoukan.net\about,c:\website\local.souzoukan.net\apartment,c:\website\local.souzoukan.net\css,c:\website\local.souzoukan.net\img,c:\website\local.souzoukan.net\insurance,c:\website\local.souzoukan.net\js,c:\website\local.souzoukan.net\simplepie,c:\website\local.souzoukan.net\totalsupport,c:\website\local.souzoukan.net\access.html,c:\website\local.souzoukan.net\curipe.html,c:\website\local.souzoukan.net\index.shtml,c:\website\local.souzoukan.net\inquiry.html,c:\website\local.souzoukan.net\privacy.html,c:\website\local.souzoukan.net\thanks.html,
+
+- - - - - - - -
+## Exclude  
+Array
+
+## Filter  
+ *.html,*.shtml,*.css,*.js
+
+## List  
+c:\website\local.souzoukan.net\about,
+c:\website\local.souzoukan.net\apartment,
+c:\website\local.souzoukan.net\css,
+c:\website\local.souzoukan.net\img,
+c:\website\local.souzoukan.net\insurance,
+c:\website\local.souzoukan.net\js,
+c:\website\local.souzoukan.net\simplepie,
+c:\website\local.souzoukan.net\totalsupport,
+c:\website\local.souzoukan.net\access.html,
+c:\website\local.souzoukan.net\curipe.html,
+c:\website\local.souzoukan.net\index.shtml,
+c:\website\local.souzoukan.net\inquiry.html,
+c:\website\local.souzoukan.net\privacy.html,
+c:\website\local.souzoukan.net\thanks.html,
+c:\website\local.souzoukan.net\about,
+c:\website\local.souzoukan.net\apartment,
+c:\website\local.souzoukan.net\css,
+c:\website\local.souzoukan.net\img,
+c:\website\local.souzoukan.net\insurance,
+c:\website\local.souzoukan.net\js,
+c:\website\local.souzoukan.net\simplepie,
+c:\website\local.souzoukan.net\totalsupport,
+c:\website\local.souzoukan.net\access.html,
+c:\website\local.souzoukan.net\curipe.html,
+c:\website\local.souzoukan.net\index.shtml,
+c:\website\local.souzoukan.net\inquiry.html,
+c:\website\local.souzoukan.net\privacy.html,
+c:\website\local.souzoukan.net\thanks.html,
