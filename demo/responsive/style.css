@@ -4,6 +4,9 @@ body {
   padding: 0;
   background: #ddd;
 }
+h1 {
+  margin-top: 0;
+}
 .container {
   background: #fff;
   margin: 0 auto;
@@ -13,6 +16,19 @@ body {
 }
 .sub {
   background: blue;
+}
+.clearfix:after {
+  clear: both;
+  content: "";
+  display: block;
+}
+.picture {
+  max-width: 400px;
+}
+.picture > img {
+  /* 画像の幅は100%にして、限界は親要素で指定する */
+  width: 100%;
+  height: auto;
 }
 
 /* メディアクエリで画面幅に応じた指定を適用する */
@@ -30,9 +46,10 @@ body {
 /* PC */
 @media (min-width: 768px) {
   .container {
+    /* 幅は%で指定する */
     width: 100%;
+    /* 最大・最小値は数値で指定する */
     max-width: 960px;
-    overflow: hidden;
   }
   h1 {
     font-size: 60px;
