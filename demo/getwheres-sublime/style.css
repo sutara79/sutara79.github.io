@@ -1,0 +1,56 @@
+body
+{
+    margin: 0;
+    padding: 0;
+}
+article
+{
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+}
+textarea
+{
+    width: calc(100% - 10px);
+    min-height: 400px;
+    margin: 0;
+    margin-top: 2em;
+    padding-right: 4px;
+    padding-left: 4px;
+
+    border: 1px solid #aaa;
+}
+input[type='text'],
+textarea
+{
+    font-family: Consolas, Meiryo, monospace;
+    font-size: 16px;
+}
+ul
+{
+    padding: 0;
+}
+li
+{
+    display: table;
+
+    width: 100%;
+}
+label
+{
+    display: table-cell;
+
+    width: 80px;
+}
+.wrap-input
+{
+    display: table-cell;
+}
+input[type='text']
+{
+    width: calc(100% - 10px);
+    padding-right: 4px;
+    padding-left: 4px;
+
+    border: 1px solid #aaa;
+}

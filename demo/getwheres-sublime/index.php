@@ -5,9 +5,9 @@ $filter = '*.html,*.shtml,*.css,*.js';
 $result = '';
 
 if (isset($_POST['root'])) {
-  $root = $_POST['root'];
-  $exclude = $_POST['exclude'];
-  $filter = $_POST['filter'];
+  $root = h($_POST['root']);
+  $exclude = h($_POST['exclude']);
+  $filter = h($_POST['filter']);
 
   $result = getWheres(
     $root,
@@ -17,21 +17,28 @@ if (isset($_POST['root'])) {
 }
 
 /**
+ * HTMLエスケープ用
+ */
+function h ($str) {
+  return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+}
+
+/**
  * SublimeTextのファイル横断検索で、
  * あるディレクトリを除外したい場合に対応した
  * `Wheres`の指定文を生成する。
- * @param string $path 一覧を取得する場所
+ * @param string $root 一覧を取得する場所
  * @param Array $exclude=array() 除外したいディレクトリ、またはファイル
  * @param string $filter='' その他の抽出条件
  */
-function getWheres($path, $exclude, $filter) {
+function getWheres($root, $exclude, $filter) {
   $arr_exclude = explode(',', $exclude);
   foreach ($arr_exclude as $key => $val) {
     $arr_exclude[$key] = str_replace('"', '', trim($val));
   }
 
   // ディレクトリを開く
-  $handle = opendir($path);
+  $handle = opendir($root);
   if (!$handle) {
     return 'File could not open.';
   }
@@ -45,7 +52,7 @@ function getWheres($path, $exclude, $filter) {
   $dirs = array();
   while (false !== ($entry = readdir($handle))) {
     if ($entry == "." || $entry == ".." || array_search($entry, $arr_exclude) !== false ) { continue; }
-    if (is_file("$path\\$entry")) {
+    if (is_file("$root\\$entry")) {
       $files[] = $entry;
     } else {
       $dirs[] = $entry;
@@ -58,8 +65,8 @@ function getWheres($path, $exclude, $filter) {
   }
 
   foreach ($dirs as $item) {
-    $wheres .= "$path\\$item,";
-    $arrange .= "$path\\$item,\n";
+    $wheres .= "$root\\$item,";
+    $arrange .= "$root\\$item,\n";
   }
   closedir($handle);
 
@@ -74,7 +81,7 @@ $arrange$filter
 
 - - - - - - - -
 ## Root
-$path
+$root
 
 ## Exclude
 $exclude
@@ -90,53 +97,7 @@ EOF;
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SublimeText3のファイル横断検索用にWheresを生成</title>
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-  }
-  article {
-    width: 100%;
-    max-width: 960px;
-    margin: 0 auto;
-  }
-  textarea {
-    margin: 0;
-    padding-left: 4px;
-    padding-right: 4px;
-/*    border-width: 1px;
-    border-color: #aaa;*/
-    border: 1px solid #aaa;
-    margin-top: 2em;
-    width: calc(100% - 10px);
-    min-height: 400px;
-  }
-  input[type="text"],
-  textarea {
-    font-size: 16px;
-    font-family: Consolas, Meiryo, monospace;
-  }
-  ul {
-    padding: 0;
-  }
-  li {
-    display: table;
-    width: 100%;
-  }
-  label {
-    display: table-cell;
-    width: 80px;
-  }
-  .wrap-input {
-    display: table-cell;
-  }
-  input[type="text"] {
-    width: calc(100% - 10px);
-    padding-left: 4px;
-    padding-right: 4px;
-    border: 1px solid #aaa;
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <article>
