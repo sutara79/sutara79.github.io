@@ -1,0 +1,48 @@
+/* 共通の設定 */
+body {
+  margin: 0;
+  padding: 0;
+  background: #ddd;
+}
+.container {
+  background: #fff;
+  margin: 0 auto;
+}
+.main {
+  background: red;
+}
+.sub {
+  background: blue;
+}
+
+/* メディアクエリで画面幅に応じた指定を適用する */
+
+/* スマートフォン */
+@media (max-width: 767px) {
+  .container {
+    padding: 20px;
+  }
+  h1 {
+    font-size: 30px;
+  }
+}
+
+/* PC */
+@media (min-width: 768px) {
+  .container {
+    width: 100%;
+    max-width: 960px;
+    overflow: hidden;
+  }
+  h1 {
+    font-size: 60px;
+  }
+  .main {
+    float: left;
+    width: 60%;
+  }
+  .sub {
+    float: left;
+    width: 40%;
+  }
+}
