@@ -2,48 +2,16 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ウェブサイトの基本構造</title>
 <link rel="stylesheet" href="//yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
-<!-- <link rel="stylesheet" href="css/reset.css"> -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/bxslider/4.2.3/jquery.bxslider.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/fontawesome/4.3.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/common.css">
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="//cdn.jsdelivr.net/bxslider/4.2.3/jquery.bxslider.min.js"></script>
-<script src="js/script.js"></script>
-<script>
-/**
- * PCとモバイルとでスライドショーの写真を切り替える
- */
-function changeSlider() {
-  // for PC
-  if (window.innerWidth > 767) {
-    $('.bx-wrapper:has(.slider-pc)').show();
-    $('.bx-wrapper:has(.slider-mobile)').hide();
-  }
-  // for Mobile
-  else {
-    $('.bx-wrapper:has(.slider-pc)').hide();
-    $('.bx-wrapper:has(.slider-mobile)').show();
-  }
-}
-$(function () {
-  /**
-   * bxslider(スライダー)の適用・設定
-   */
-  $('.bxslider').bxSlider({
-    auto: true,
-    pause: 4000,
-    autoHover: true,
-    onSliderLoad: changeSlider,
-    onSliderResize: changeSlider
-  });
-  // モバイルビューでのスライダーの矢印は隠す
-  $('.bx-wrapper:has(.slider-mobile) .bx-controls-direction').hide();
-});
-</script>
+<script src="js/common.js"></script>
+<script src="js/index.js"></script>
 </head>
 <body>
 <div class="wrap-for-fixedfooter">
