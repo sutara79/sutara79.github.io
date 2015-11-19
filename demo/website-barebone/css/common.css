@@ -22,6 +22,7 @@ body {
 /* for Mobile */
 @media (max-width: 767px) {
   .contents {
+    padding-top: 60px;
     padding-left: 6px;
     padding-right: 6px;
     width: calc(100% - 6px - 6px);
@@ -306,6 +307,13 @@ footer {
   .hero-inner {
     margin: 0 auto;
     max-width: 960px;
+  }
+}
+/* for Mobile */
+@media (max-width: 767px) {
+  .hero {
+    padding-top: 60px;
+    margin-bottom: -60px;
   }
 }
 
