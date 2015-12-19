@@ -20,6 +20,20 @@ section {
 }
 
 /**
+ * 両方流動
+ */
+.fluid-0-1 {
+  float: left;
+  width: 30%;
+  background: olive;
+}
+.fluid-0-2 {
+  float: right;
+  width: 70%;
+  background: green;
+}
+
+/**
  * 左固定、右流動
  */
 .fixed-1 {
