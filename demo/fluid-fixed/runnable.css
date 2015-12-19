@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+footer {
+  margin-top: 60px;
+}
+section {
+  margin-top: 30px;
+}
+.container {
+  background: red;
+  width: 100%;
+  max-width: 1000px;
+}
+.clearfix:after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+/**
+ * 左固定、右流動
+ */
+.fixed-1 {
+  background: blue;
+  width: 300px;
+  float: left;
+}
+.fluid-1 {
+  background: green;
+  margin-left: 300px;
+}
+
+/**
+ * 左流動、右固定
+ * ネガティブマージン
+ */
+.fixed-2 {
+  background: blue;
+  width: 300px;
+  float: right;
+}
+.fluid-2 {
+  background: green;
+  float: left;
+  width: 100%;
+  box-sizing: border-box;
+  margin-right: -300px;
+  padding-right: 300px;
+}
+
+/**
+ * 左流動、右固定
+ * display:table;
+ */
+.container {
+  display: table;
+}
+.fixed-3 {
+  display: table-cell;
+  background: blue;
+  width: 300px;
+}
+.fluid-3 {
+  display: table-cell;
+  background: green;
+}
