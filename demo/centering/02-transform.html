@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Centering-2: transform</title>
+<style>
+.outer {
+  position: relative;
+  background-image: url(img01.jpg);
+  background-size: cover;
+  width: 100%;
+  padding-top: 40%;
+}
+.inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%); /* IE 9 */
+  -webkit-transform: translate(-50%, -50%); /* iOS Safari 8.x, Android Browser 4.x */
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  background: red;
+  color: white;
+}
+</style>
+</head>
+<body>
+<h1>Centering-2: transform</h1>
+<div class="outer">
+  <div class="inner">
+    inner<br>
+    text
+  </div>
+</div>
+</body>
+</html>
