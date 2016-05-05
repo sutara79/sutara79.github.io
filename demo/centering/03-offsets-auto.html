@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Centering-3: offsets + auto</title>
+<style>
+.outer {
+  position: relative;
+  background-image: url(img01.jpg);
+  background-size: cover;
+  width: 100%;
+  padding-top: 40%;
+}
+.inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  width: 120px;
+  height: 100px;
+  background: red;
+  color: white;
+}
+</style>
+</head>
+<body>
+<h1>Centering-3: offsets + auto</h1>
+<div class="outer">
+  <div class="inner">
+    inner<br>
+    text
+  </div>
+</div>
+</body>
+</html>
