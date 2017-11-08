@@ -1,2 +1,12 @@
-# 書き捨て用のファイル
-demo/test*
+# OS
+.AppleDouble/
+*.DS_Store
+Thumbs.db
+
+# Package manager
+node_modules/
+
+# Doc & log
+out/
+coverage/
+npm-debug.log
