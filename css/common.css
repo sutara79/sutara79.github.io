@@ -20,13 +20,13 @@ h6 {
  * ジャンボトロン
  */
 .jumbotron {
-  background-color: #486;
-  background-image: linear-gradient(30deg, #3d8260 12%, transparent 12.5%, transparent 87%, #3d8260 87.5%, #3d8260),
-  linear-gradient(150deg, #3d8260 12%, transparent 12.5%, transparent 87%, #3d8260 87.5%, #3d8260),
-  linear-gradient(30deg, #3d8260 12%, transparent 12.5%, transparent 87%, #3d8260 87.5%, #3d8260),
-  linear-gradient(150deg, #3d8260 12%, transparent 12.5%, transparent 87%, #3d8260 87.5%, #3d8260),
-  linear-gradient(60deg, #4a8e6c 25%, transparent 25.5%, transparent 75%, #4a8e6c 75%, #4a8e6c),
-  linear-gradient(60deg, #4a8e6c 25%, transparent 25.5%, transparent 75%, #4a8e6c 75%, #4a8e6c);
+  background-color: #42886a;
+  background-image: linear-gradient(30deg, #3c8264 12%, transparent 12.5%, transparent 87%, #3c8264 87.5%, #3c8264),
+  linear-gradient(150deg, #3c8264 12%, transparent 12.5%, transparent 87%, #3c8264 87.5%, #3c8264),
+  linear-gradient(30deg, #3c8264 12%, transparent 12.5%, transparent 87%, #3c8264 87.5%, #3c8264),
+  linear-gradient(150deg, #3c8264 12%, transparent 12.5%, transparent 87%, #3c8264 87.5%, #3c8264),
+  linear-gradient(60deg, #488e70 25%, transparent 25.5%, transparent 75%, #488e70 75%, #488e70),
+  linear-gradient(60deg, #488e70 25%, transparent 25.5%, transparent 75%, #488e70 75%, #488e70);
   background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
   background-size: 80px 140px;
   color: #fff;
